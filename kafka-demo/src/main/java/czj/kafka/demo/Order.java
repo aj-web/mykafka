@@ -2,8 +2,8 @@ package czj.kafka.demo;
 
 /**
  * @Author ninan
- * @Description 
- * @Date  2021/6/21
+ * @Description
+ * @Date 2021/6/21
  **/
 public class Order {
 

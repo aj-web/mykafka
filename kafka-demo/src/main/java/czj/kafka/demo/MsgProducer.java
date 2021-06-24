@@ -21,7 +21,7 @@ public class MsgProducer {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         Properties properties = new Properties();
-        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.253.101:9092,192.168.253.101:9093,192.168.253.101:9094,");
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.253.101:9092,192.168.253.101:9093,192.168.253.101:9094");
         /*
          发出消息持久化机制参数
         （1）acks=0： 表示producer不需要等待任何broker确认收到消息的回复，就可以继续发送下一条消息。性能最高，但是最容易丢消息。
@@ -37,8 +37,8 @@ public class MsgProducer {
         */
         properties.put(ProducerConfig.RETRIES_CONFIG, "3");
         /*
-        *重试间隔设置
-        */
+         *重试间隔设置
+         */
         properties.put(ProducerConfig.RETRY_BACKOFF_MS_CONFIG, 300);
         /*
          设置发送消息的本地缓冲区，如果设置了该缓冲区，消息会先发送到本地缓冲区，
@@ -65,7 +65,7 @@ public class MsgProducer {
          */
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
-        Producer<String,String> producer = new KafkaProducer<>(properties);
+        Producer<String, String> producer = new KafkaProducer<>(properties);
         int msgNum = 5;
         final CountDownLatch countDownLatch = new CountDownLatch(msgNum);
         for (int i = 1; i <= msgNum; i++) {
